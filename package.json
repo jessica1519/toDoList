@@ -9,6 +9,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "18.17.0"
+  },
   "dependencies": {
     "bootstrap-icons": "^1.11.1",
     "ejs": "^3.1.9",

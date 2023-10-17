@@ -4,12 +4,12 @@ const mongoose = require("mongoose");
 const app = express();
 const _ = require("lodash"); //per trasformare testo inserito con prima lettera maiuscola//
 app.set("view engine", "ejs");
-const port = 3000;
+//const port = 3000;tolgo perchè ho aggiunto riga 116//
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 mongoose.connect(
   "mongodb+srv://admin-jessica:test123@atlascluster.fegkebw.mongodb.net/todolistDB"
-); //,{useNewUrlParser:true});se esce errore//
+); //{useNewUrlParser:true});se esce errore//
 const itemSchema = {
   //creare un nuovo schema//
   name: String,
@@ -113,7 +113,11 @@ app.post("/delete", async (req, res) => {
     res.render("index1.ejs", { error: "Result not found" });
   }
 });*/
-
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port);
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
